@@ -15,5 +15,5 @@ app = FastAPI(
     contact={"name": "João Victor", "email": "joaovictor@joaovictor.com"},
 )
 
-app.include_router(users.router, prefix="/users", tags=["users"])
-app.include_router(books.router, prefix="/books", tags=["books"])
+app.include_router(users.router, prefix="/api/v1/user", tags=["user"])
+app.include_router(books.router, prefix="/api/v1/book", tags=["book"])

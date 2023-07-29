@@ -78,6 +78,7 @@ def upgrade() -> None:
         sa.Column("categories", sa.String(), nullable=False),
         sa.Column("published_date", sa.Date(), nullable=True),
         sa.Column("genres_id", sa.Integer(), nullable=True),
+        sa.Column("authors_id", sa.Integer(), nullable=True),
         sa.Column("publisher_id", sa.Integer(), nullable=True),
         sa.Column("language_id", sa.Integer(), nullable=True),
         sa.Column("price", sa.Float(), nullable=False),
@@ -101,6 +102,10 @@ def upgrade() -> None:
         sa.ForeignKeyConstraint(
             ["publisher_id"],
             ["publishers.id"],
+        ),
+        sa.ForeignKeyConstraint(
+            ["authors_id"],
+            ["authors.id"],
         ),
         sa.PrimaryKeyConstraint("id"),
     )

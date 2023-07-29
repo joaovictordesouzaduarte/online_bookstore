@@ -11,5 +11,5 @@ class User(Timestamp, Base):
     username = Column(String, unique=True, index=True)
     email = Column(String, unique=True, index=True)
     hashed_password = Column(String)
-    orders = relationship("Order", back_populates="users")
+    orders = relationship("Order", back_populates="user")
     is_active = Column(Boolean, default=True)

@@ -31,12 +31,10 @@ class Book(Timestamp, Base):
     categories = Column(String, nullable=False)
     published_date = Column(Date, nullable=True)
     genres_id = Column(Integer, ForeignKey("genres.id"))
-    authors_id = Column(Integer, ForeignKey("authors.id"))
     publisher_id = Column(Integer, ForeignKey("publishers.id"))
     language_id = Column(Integer, ForeignKey("languages.id"))
     publishers = relationship("Publisher", back_populates="books")
     languages = relationship("Language", back_populates="books")
-    authors = relationship("Author", back_populates="books")
     genres = relationship("Genre", back_populates="books")
     format = Column(Enum(Format))
     price = Column(Float, nullable=False)
@@ -45,13 +43,6 @@ class Book(Timestamp, Base):
     synophis = Column(String(length=250), nullable=True)
     title = Column(String, index=True)
     cover_image_url = Column(URLType, nullable=True)
-
-
-class Author(Timestamp, Base):
-    __tablename__ = "authors"
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)
-    books = relationship("Book", back_populates="authors")
 
 
 class Publisher(Timestamp, Base):

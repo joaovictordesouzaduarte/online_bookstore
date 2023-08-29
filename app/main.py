@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import users, books, genres
+from routers import users, books, genres, language
 from db.models import book, user, order
 from db.db_setup import engine
 
@@ -18,3 +18,4 @@ app = FastAPI(
 app.include_router(users.router, prefix="/api/v1/user", tags=["user"])
 app.include_router(books.router, prefix="/api/v1/book", tags=["book"])
 app.include_router(genres.router, prefix="/api/v1/genre", tags=["genre"])
+app.include_router(language.router, prefix="/api/v1/language", tags=["language"])
